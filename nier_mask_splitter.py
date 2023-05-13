@@ -1,6 +1,5 @@
 from PIL import Image
 import os
-import shutil
 
 # gets path of current directory
 current_dir = os.getcwd()
@@ -34,7 +33,7 @@ def separate_and_combine(image_path, image_name):
     # Invert the green channel
     inverted_green = green.point(lambda x: 255 - x)
 
-    print("RGB channels split")
+    print("RGB channels split for " + str(image_name))
 
     # Merge in a different order
     combined_image = Image.merge("RGB", (blue, inverted_green, red))
@@ -42,7 +41,7 @@ def separate_and_combine(image_path, image_name):
     # Save the combined image
     combined_image.save(os.path.join(mask_folder, image_name))
 
-    print("RGB channels combined")  
+    print("RGB channels combined for " + str(image_name))  
 
 def image_list_maker():
     for f in os.listdir(current_dir):
