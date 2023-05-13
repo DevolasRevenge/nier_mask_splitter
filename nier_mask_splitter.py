@@ -12,7 +12,7 @@ file_suffix = "orm.png"
 
 image_list = []
 
-#checks for a folder and creates it if it doesn't exist
+# checks for a folder and creates it if it doesn't exist
 def folder_check(folder):
     if not os.path.exists(folder):
         try: 
@@ -20,6 +20,7 @@ def folder_check(folder):
         except OSError as error: 
             print(error)  
 
+# separates the rgb channels and combines them
 def separate_and_combine(image_path, image_name):
     # Open the image
     image = Image.open(image_path)
@@ -43,12 +44,14 @@ def separate_and_combine(image_path, image_name):
 
     print("RGB channels combined for " + str(image_name))  
 
+# makes list of images that end with orm.png so the process is only performed on them
 def image_list_maker():
     for f in os.listdir(current_dir):
         endswith = f.endswith(file_suffix)
         if endswith == True:
             image_list.append(f)
 
+# iterates through the list
 def image_iteration():
     for image in image_list:
         image_path = os.path.join(current_dir, image)
